@@ -44,6 +44,40 @@ class:center,middle
 ---
 
 # What to Expect Today
+--
+
++ A discussion of data and the practice of analysis
+--
+
++ A good conversaton about open data
+--
+
++ Some exercises with data
+--
+
++ Work with open data in its natural (dirty) state
+--
+
++ Some challenges to think yourself through common data problems
+--
+
++ Some fun along the way
+
+---
+
+# Questions to Explore
+--
+
++ What are the patterns to 311 Service Requests?
+--
+
++ How does that look when we take into account population?
+--
+
++ What are the patterns to how 311 Service Requests are closed? (If we have time)
+--
+
++ Is there a correlation between factors such as median income to how long a 311 Service Request stays open? (If we have time)
 
 ---
 
@@ -138,8 +172,8 @@ class:center,middle
 ---
 
 # Data for Exercise
-![img-center-100](images/od_exercise.png)
-
+![img-center-95](images/portal_exercise.png)
+.caption[[Click to download the data](20170101_20170917_311_Noise.csv)]
 ---
 
 # Exploratory Data Analysis
@@ -186,7 +220,7 @@ class:center,middle
 
 class:center,middle
 # Looking at Noise in New York City
-## [Click to download the data](data/NYC_Population_1970-2010.xlsx)
+
 
 ---
 
@@ -288,6 +322,218 @@ class:center,middle
 ---
 
 class:center,middle
+# Should we compare the CDs directly?
+![img-center-50](images/cd_map.png)
+## Why or why not?
+
+---
+
+class:center,middle
+# Your Task
+
+![img-center-50](https://media.giphy.com/media/FM0uwEP45RUly/giphy.gif)
+
+# Compare the number of noise-related 311 Service Requests by population
+
+
+---
+
+class:center,middle
+# [Population Data from the<br>NYC Department of City Planning](https://www1.nyc.gov/site/planning/data-maps/nyc-population/census-2010.page)
+
+[![img-center-80](images/pop_data.png)](https://www1.nyc.gov/site/planning/data-maps/nyc-population/census-2010.page)
+
+---
+
+class:center,middle
+# Data Cleaning
+## How do we make this data usable?
+![img-center-70](images/cd_pop_table.png)
+---
+
+class:center,middle
+# Now how do we join it with the 311 data?
+
+---
+
+# Functions in Excel
+--
+
++ Allow you to do calculations in Excel
+--
+
++ Also allow you to manipulate text
+--
+
++ And a whole lot more...
+
+---
+
+name:cat-function
+# Some Categories of Functions in Excel
+--
+
++ Database functions
+--
+
++ Date and time functions
+--
+
++ Financial functions
+--
+
++ Logical functions
+--
+
++ Lookup and reference functions
+--
+
++ Math and trigonometry functions
+--
+
++ Statistical functions
+--
+
++ Text functions
+--
+
++ 13 categories in total
+--
+
++ [Click for a list of some useful functions](#excel-guide)
+
+---
+
+# [VLOOKUP](https://support.office.com/en-us/article/VLOOKUP-function-0bbc8083-26fe-4963-8ab8-93a18ad188a1)
+--
+
++ Useful for referencing data from another sheet (reference tables)
+--
+
++ Basic Syntax
+```
+=VLOOKUP(lookup_value, table_array, col_index_num, [range_lookup])
+```
+--
++ Example
+```
+=VLOOKUP(A2,SHEET2$A1:$D500,4,FALSE)
+```
+--
++ Lookup the value in cell A2 in the range A1:D500 on SHEET2 and return whatever you find in column 4 (D)
+
+---
+
+# VLOOKUP
++ We're going to use a VLOOKUP to pull the CD population into the counts of noise-related 311 Service Requests
+
+![img-center-80](images/vlookup_result.png)
+---
+
+# Preparing the Population Sheet
+--
+
++ We need to create the exact same unique identifier in the population sheet
+--
+
++ How do we do this? (Give it a try)
+--
+
++ Hint: Look at the [CONCATENATE function](https://support.office.com/en-us/article/CONCATENATE-function-8f8ae884-2ca8-4f7a-b093-75d702bea31d)
+--
+
+
+![img-center-80](images/cd_pop_prep_box.png)
+--
+
+.caption[Check out the [Formulas section](#formulas) if you have any trouble]
+---
+
+# VLOOKUP
+--
+
++ Create a count of the 311 Service Requests by CD
+--
+
++ Try to write the VLOOKUP to pull in the population
+--
+
++ Verify your result
+--
+
++ Work together to figure it out
+--
+
++ Try applying some conditional formatting
+
+![img-center-70](images/cd_pop_cf.png)
+
+.caption[Check out the [Formulas section](#formulas) if you have any trouble]
+---
+
+class: center,middle
+# Let's look at the time 311 Service Requests are open
+
+---
+
+# Steps
+--
+
++ Subtract the `Closed Date` from the `Created Date`
+--
+
++ The result is the fraction of a day that a complaint was open
+--
+
++ Calculate the hours open by multiplying that number by 24
+--
+
++ You'll have to do some formatting on the column
+--
+
++ Look through the data to verify the formula
+
+---
+
+# Your Turn
+--
+
++ Look through the `Hours Open` and see if you can see any trends
+--
+
++ Identify any data concerns and what you might do about them
+--
+
++ Be prepared to discuss with the group
+--
+
++ Remember you can change the values in your pivot table to calculate averages
+--
+
++ And don't forget to refresh your pivot table
+
+---
+
+class:center,middle
+# How might factors like median income affect how long a 311 Service Request stays open?
+
+---
+
+# Steps to analyze
++ Get [median income data from DCP](https://www1.nyc.gov/site/planning/data-maps/nyc-population/american-community-survey.page)
+
+![img-center-60](images/boba_economic_box.png)
+
+---
+
+# Steps to analyze
++ Get [median income data from DCP](https://www1.nyc.gov/site/planning/data-maps/nyc-population/american-community-survey.page)
++ Clean the data<br>
+--
+Or just use [the data I've already cleaned](data/2015_CD_Median_HH_Income.xlsx)
+---
+
+class:center,middle
 # Wrap-Up
 
 ---
@@ -384,6 +630,12 @@ name:final
 class:center, middle
 #THANK YOU!
 
+---
+name:formulas
+# Formulas (Cells and sheet names will differ)
++ Concatenating the Borough and Community District Number<br>`=CONCATENATE(IF(LEN(B2)<2,"0",""),B2," ",UPPER(A2))`
++ VLOOKUP for population data<br>`=VLOOKUP(A4,[2010_NYC_CD_population.xlsx]A!$C$1:$E$60,3,FALSE)`
++ Calculating the hours open `=(C2-B2)*24`
 
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
