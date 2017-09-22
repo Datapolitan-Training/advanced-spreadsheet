@@ -173,7 +173,7 @@ class:center,middle
 
 # Data for Exercise
 ![img-center-95](images/portal_exercise.png)
-.caption[[Click to download the data](20170101_20170917_311_Noise.csv)]
+.caption[[Click to download the data](https://s3.amazonaws.com/datapolitan-training-files/20170101_20170917_311_Noise.csv)]
 ---
 
 # Exploratory Data Analysis
@@ -349,6 +349,8 @@ class:center,middle
 # Data Cleaning
 ## How do we make this data usable?
 ![img-center-70](images/cd_pop_table.png)
+
+.caption[[Click to download](https://s3.amazonaws.com/datapolitan-training-files/2010_NYC_CD_population.xlsx) the cleaned data]
 ---
 
 class:center,middle
@@ -485,7 +487,7 @@ class: center,middle
 + The result is the fraction of a day that a complaint was open
 --
 
-+ Calculate the hours open by multiplying that number by 24
++ Calculate the hours open by multiplying by 24
 --
 
 + You'll have to do some formatting on the column
@@ -515,6 +517,19 @@ class: center,middle
 
 ---
 
+# What were the Data Issues You Noticed?
+--
+
++ Incidents without `Closed Dates`
+--
+
++ Incidents with `Closed Dates` before the `Created Date`
+
+--
+
+# What do we do about this?
+
+---
 class:center,middle
 # How might factors like median income affect how long a 311 Service Request stays open?
 
@@ -531,17 +546,24 @@ class:center,middle
 + Get [median income data from DCP](https://www1.nyc.gov/site/planning/data-maps/nyc-population/american-community-survey.page)
 --
 
-+ Clean the data<br>
++ Clean the data 
 --
-Or just use [the data I've already cleaned](data/2015_CD_Median_HH_Income.xlsx)
+(or just use [the data I've already cleaned](https://s3.amazonaws.com/datapolitan-training-files/2015_CD_Median_HH_Income.xlsx))
 --
 
 + Find average `Hours Open` by Community District in the 311 Service Request data
 --
 
-+ Make sure you've dealt with the issues
++ Make sure you've dealt with the issues of the `Closed Date` field (missing or in the past)
+--
 
-+ Do a VLOOKUP on the 
++ Create a unique identifier (like in our population sheet) in the HH Income 
+--
+
++ Do a VLOOKUP on the identifier
+--
+
++ Calculate the correlation (using the [CORREL function](https://support.office.com/en-us/article/CORREL-function-995dcef7-0c0a-4bed-a3fb-239d7b68ca92))
 ---
 
 name:wrap-up
